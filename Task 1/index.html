@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Student Grade Calculator</h1>
+        
+        <div class="subject-inputs">
+            <input type="number" placeholder="Math" id="math">
+            <input type="number" placeholder="Physics" min="0" max="100" id="Physics">
+        </div>
+        <div class="subject-inputs">
+            <input type="number" placeholder="Chemistry" min="0" max="100" id="Chemistry">
+        </div>
+        
+        <button onclick="calculateGrade()">Calculate Grade</button>
+        
+        <div id="error" class="error">Please enter valid marks between 0 and 100</div>
+        
+        <div id="result" class="result">
+            <h3>Results</h3>
+            <p>Total Marks: <span id="total">0</span>/300</p>
+            <p>Average: <span id="average">0</span>%</p>
+            <div class="grade">Grade: <span id="grade">-</span></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
