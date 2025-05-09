@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskTrek</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="A simple task management application" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>TaskTrek</h1>
+        <p>Track, manage, and complete your tasks efficiently</p>
+      </div>
+
+      <div class="user-section">
+        <div id="user-display" class="hidden">
+          <p>Welcome, <span id="user-name-display"></span>!</p>
+          <button id="edit-name-btn" class="btn-ghost">Edit</button>
+        </div>
+        <form id="name-form">
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Enter your name..."
+            maxlength="50"
+          />
+          <button type="submit" id="save-name-btn" class="btn">Save</button>
+        </form>
+      </div>
+
+      <div class="task-input-section">
+        <form id="task-form">
+          <input
+            type="text"
+            id="task-input"
+            placeholder="Add a new task..."
+            maxlength="100"
+          />
+          <button type="submit" id="add-task-btn" class="btn">
+            <span class="icon-plus">+</span> Add
+          </button>
+        </form>
+      </div>
+
+      <div id="task-stats" class="task-stats hidden">
+        <div class="task-count">
+          <span id="total-tasks">0</span> tasks •
+          <span id="completed-tasks">0</span> completed
+        </div>
+        <div class="completion-rate">
+          <span id="completion-percentage">0%</span> complete
+        </div>
+      </div>
+
+      <div id="task-list" class="task-list">
+        <div id="empty-state" class="empty-state">
+          <p>No tasks yet. Add one to get started!</p>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Have a question or feedback? Reach out to us!</p>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" placeholder="Your Name" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" placeholder="Your Email" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" placeholder="Your Message" rows="4" required></textarea>
+          </div>
+          
+          <button type="submit" id="contact-submit-btn" class="btn btn-full">Send Message</button>
+        </form>
+        
+        <div id="contact-success" class="contact-success hidden">
+          <p>Thanks for your message! We'll get back to you soon.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
