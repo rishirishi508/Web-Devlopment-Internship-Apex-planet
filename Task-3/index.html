@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joke Generator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #ffffff, #e6e0ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #8B5CF6;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .joke-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .joke-card.loading {
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .joke-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+      text-transform: capitalize;
+    }
+    
+    .joke-setup {
+      font-size: 1.25rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .joke-punchline {
+      font-size: 1.2rem;
+      text-align: center;
+      font-weight: 700;
+      color: #8B5CF6;
+    }
+    
+    .pending-punchline {
+      font-size: 1rem;
+      text-align: center;
+      color: #999;
+      font-style: italic;
+    }
+    
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .controls {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+    
+    select {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      background-color: white;
+      min-width: 200px;
+      cursor: pointer;
+    }
+    
+    button {
+      background-color: #8B5CF6;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    button:hover {
+      background-color: #7c4ff3;
+    }
+    
+    button:disabled {
+      background-color: #c4b5fd;
+      cursor: not-allowed;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    .laugh-meter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    
+    .laugh-meter p {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .laugh-icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+      animation: pulse 1s infinite;
+    }
+    
+    .meter-bar {
+      width: 150px;
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-left: 0.5rem;
+    }
+    
+    .meter-fill {
+      height: 100%;
+      border-radius: 9999px;
+      transition: width 0.5s ease-out;
+    }
+    
+    .bounce-in {
+      animation: bounceIn 0.6s ease-out forwards;
+    }
+    
+    .shake {
+      animation: shake 0.8s ease-in-out;
+    }
+    
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-5px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    @keyframes shake {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      15% {
+        transform: rotate(5deg);
+      }
+      30% {
+        transform: rotate(-5deg);
+      }
+      45% {
+        transform: rotate(4deg);
+      }
+      60% {
+        transform: rotate(-4deg);
+      }
+      75% {
+        transform: rotate(2deg);
+      }
+      85% {
+        transform: rotate(-2deg);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Giggle Box</h1>
+    <p>Click the button and prepare to laugh at the most random jokes!</p>
+  </header>
+  
+  <div class="container">
+    <div id="joke-card" class="joke-card">
+      <h2>No joke loaded</h2>
+      <p class="joke-setup">Click the button below to get a random joke!</p>
+    </div>
+    
+    <div class="controls">
+      <select id="category-select">
+        <option value="any">Any category</option>
+        <option value="programming">Programming</option>
+        <option value="general">General</option>
+        <option value="knock-knock">Knock-knock</option>
+      </select>
+      
+      <button id="joke-button">
+        Get a Random Joke
+      </button>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Powered by the Official Joke API</p>
+    <p style="margin-top: 0.5rem;">Click the button for more laughs!</p>
+  </footer>
+
+  <script>
+    const jokeCard = document.getElementById('joke-card');
+    const categorySelect = document.getElementById('category-select');
+    const jokeButton = document.getElementById('joke-button');
+    let isLoading = false;
+    async function fetchRandomJoke(category) {
+      isLoading = true;
+      updateUI();
+      
+      try {
+        const url = category && category !== 'any'
+          ? `https://official-joke-api.appspot.com/jokes/${category}/random`
+          : 'https://official-joke-api.appspot.com/random_joke';
+        
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch joke');
+        }
+        
+        const data = await response.json();
+        const joke = Array.isArray(data) ? data[0] : data;
+        
+        displayJoke(joke, category);
+      } catch (err) {
+        console.error('Error fetching joke:', err);
+        displayError(err.message);
+      } finally {
+        isLoading = false;
+        updateUI(false);
+      }
+    }
+    function displayJoke(joke, requestedCategory) {
+      jokeCard.innerHTML = '';
+      jokeCard.classList.add('bounce-in');
+      const jokeType = document.createElement('h2');
+      jokeType.textContent = `${joke.type} Joke`;
+      jokeCard.appendChild(jokeType);
+      const setup = document.createElement('p');
+      setup.className = 'joke-setup';
+      setup.textContent = joke.setup;
+      jokeCard.appendChild(setup);
+      const pendingPunchline = document.createElement('p');
+      pendingPunchline.className = 'pending-punchline';
+      pendingPunchline.textContent = '(punchline revealing soon...)';
+      jokeCard.appendChild(pendingPunchline);
+      setTimeout(() => {
+        pendingPunchline.remove();
+        
+        const punchline = document.createElement('p');
+        punchline.className = 'joke-punchline bounce-in';
+        punchline.textContent = joke.punchline;
+        jokeCard.appendChild(punchline);
+        const category = requestedCategory && requestedCategory !== 'any' ? requestedCategory : joke.type;
+        addLaughMeter(category);
+      }, 2000);
+    }
+    function displayError(message) {
+      jokeCard.innerHTML = `
+        <h2>Error</h2>
+        <p class="joke-setup">Failed to fetch joke: ${message}</p>
+        <p class="joke-setup">Please try again!</p>
+      `;
+    }
+    function addLaughMeter(jokeType) {
+      let level = 1;
+      switch (jokeType.toLowerCase()) {
+        case 'programming':
+          level = 3; 
+          break;
+        case 'dad':
+          level = 2;
+          break;
+        case 'knock-knock':
+          level = 2;
+          break;
+        case 'general':
+        default:
+          level = 1; 
+          break;
+      }
+      
+      const laughMeter = document.createElement('div');
+      laughMeter.className = 'laugh-meter';
+      
+      const meterLabel = document.createElement('p');
+      meterLabel.textContent = 'Laugh Meter';
+      laughMeter.appendChild(meterLabel);
+      
+      const meterContainer = document.createElement('div');
+      meterContainer.style.display = 'flex';
+      meterContainer.style.alignItems = 'center';
+      const laughIcon = document.createElement('span');
+      laughIcon.className = 'laugh-icon';
+      
+      if (level === 1) {
+        laughIcon.textContent = '😊';
+        laughIcon.style.color = '#FBBF24';
+      } else if (level === 2) {
+        laughIcon.textContent = '😄';
+        laughIcon.style.color = '#F97316';
+      } else {
+        laughIcon.textContent = '🤣';
+        laughIcon.style.color = '#EF4444';
+      }
+      
+      meterContainer.appendChild(laughIcon);
+      const meterBar = document.createElement('div');
+      meterBar.className = 'meter-bar';
+      
+      const meterFill = document.createElement('div');
+      meterFill.className = 'meter-fill';
+      
+      if (level === 1) {
+        meterFill.style.width = '33%';
+        meterFill.style.backgroundColor = '#FBBF24';
+      } else if (level === 2) {
+        meterFill.style.width = '66%';
+        meterFill.style.backgroundColor = '#F97316';
+      } else {
+        meterFill.style.width = '100%';
+        meterFill.style.backgroundColor = '#EF4444';
+      }
+      
+      meterBar.appendChild(meterFill);
+      meterContainer.appendChild(meterBar);
+      laughMeter.appendChild(meterContainer);
+      
+      jokeCard.appendChild(laughMeter);
+    }
+    function updateUI() {
+      if (isLoading) {
+        jokeButton.disabled = true;
+        jokeButton.innerHTML = 'Loading <span class="spinner"></span>';
+        jokeCard.innerHTML = `
+          <h2>Loading a joke...</h2>
+          <div style="display: flex; justify-content: center; padding: 2rem;">
+            <div class="spinner" style="width: 2rem; height: 2rem; border-width: 3px; border-color: rgba(139, 92, 246, 0.3); border-top-color: #8B5CF6;"></div>
+          </div>
+        `;
+      } else {
+        jokeButton.disabled = false;
+        jokeButton.textContent = 'Get a Random Joke';
+      }
+    }
+    jokeButton.addEventListener('click', () => {
+      const category = categorySelect.value;
+      fetchRandomJoke(category);
+      
+      jokeButton.classList.add('shake');
+      setTimeout(() => jokeButton.classList.remove('shake'), 800);
+    });
+    jokeCard.addEventListener('animationend', (e) => {
+      if (e.animationName === 'bounceIn') {
+        jokeCard.classList.remove('bounce-in');
+      }
+    });
+  </script>
+</body>
+</html>
