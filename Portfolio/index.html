@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">PORTFOLIO</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">PonRishi</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="D:\Portfolio\Asset\PASSPORT SIZE.jpg"alt="PonRishi profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">PonRishi M</h1>
+        <p class="section__text__p2">Engineering Student</p>
+        <div class="btn-container">
+          <a href=https://drive.google.com/file/d/1uLM3hHVSptANPdOc4B-9UEu58vn1yZxO/view?usp=sharing target="_blank">
+            <button class="btn btn-color-2">View Resume</button>
+        </a>
+        
+        </div>
+        <div id="socials-container">
+          <img
+            src="D:\Portfolio\Asset\linkedin-icon-for-resume-23.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/ponrishi-m-72b48b309/'"
+          />
+          <img
+            src="D:\Portfolio\Asset\github-icon-2048x2048-dpporae2.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/rishirishi508'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+             
+              <h3>Education</h3>
+              <p>Higher Secondary School (12th Grade)<br>Suburban Matriculation Higher Secondary School, Ramnagar Completed in 2023
+            </div>
+            <div class="details-container">
+             
+            
+              <h3>Education</h3>
+              <p>Pursuing B.Tech Information Technology<br />Coimbatore Institute of Engineering and Technology (CIET) | (2023-2027)</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              I am a B.Tech Information Technology student at CIET College, specializing in web and mobile application development. With expertise in HTML, CSS, and Flutter, I have a keen interest in creating user-friendly digital experiences. Currently, I am developing a food ordering application and an organ donation management system, integrating technologies like React.js, Node.js, and blockchain. My skill set also includes video editing, and I am always eager to learn and innovate in the tech space!!!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Skills</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Technical Skill</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\html.jpg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\css.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>     
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\png-javascript-badge-picture-8.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\python.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\ux-ui-logo.svg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>UI/UX Designer</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Technical Skill(Engaged In)</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\flutter.jpg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Flutter</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\vdo.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Conent Creation & Video Editing</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\dart.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Dart Programming Language</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="D:\Portfolio\Asset\logic.jpg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3> Logical Thinking</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </article>
+            <article>
+              <img
+                src="D:\Portfolio\Asset\project.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <div>
+                <h3> Project Management</h3>
+                <p>Intermediate</p>
+              </div>
+            </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">1. Spotify Clone (Web Project)
+              Tech Stack: HTML, CSS, JavaScript
+              
+              A basic Spotify-like music streaming website with a simple UI.
+              Allows users to play, pause, and navigate through songs.
+              Showcases frontend development skills.
+            </div>
+
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+            2. Food Ordering App (Flutter Project)
+              Tech Stack: Flutter (Dart), Firebase (or Backend API)
+              
+              A Swiggy-like food ordering app where users can browse restaurants, add items to a cart, and place orders.
+              Focuses on UI/UX and seamless user interaction.
+              Future improvements may include real-time order tracking and payments.</h2>
+            </div>
+          </div>
+          <div class="experience-details-container">
+            <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+            3. Portfolio Website
+              Tech Stack: HTML, CSS, JavaScript (or React.js if updated)
+              
+              A personal portfolio showcasing skills, projects, and experience.
+              Features an experience section, skills section, and contact details.
+              May include animations or interactive elements.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="D:\Portfolio\Asset\email-icon-for-your-website-mobile-presentation-and-logo-design-free-vector.jpg"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:rishirishi0307@gmail.com">rishirishi0307@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="D:\Portfolio\Asset\linkedin-icon-for-resume-23.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/ponrishi-m-72b48b309/">LinkedIn</a></p><br>
+          <img
+          src="D:\Portfolio\Asset\instagram-icon-vector-free-6.png"
+          alt="insta icon"
+          class="icon contact-icon"
+        />
+        <p><a href="https://www.instagram.com/ri_x_hii_?igsh=MXBmenNsZXk5ODNydg=="> @ri_x_hii_</a></p>
+        </div>
+
+      </div>
+      
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
